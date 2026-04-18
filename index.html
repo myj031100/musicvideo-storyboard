@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>뮤직비디오 스토리보드</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Music Video Project</p>
+        <h1>촬영 편집 제작 스토리보드 작성</h1>
+      </div>
+      <div class="hero-card">
+        <p class="card-label">프로젝트 정보</p>
+        <ul class="project-meta">
+          <li><span>곡 제목</span><strong>이무진 - 과제곡</strong></li>
+          <li><span>콘셉트</span><strong>일상 / 개그</strong></li>
+          <li><span>러닝타임</span><strong>3분 50초</strong></li>
+          <li><span>제작 인원</span><strong>5명</strong></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel" id="storyboard">
+        <div class="section-heading">
+          <p class="section-kicker">Storyboard</p>
+          <h2>장면 구성</h2>
+        </div>
+        <div class="top-actions">
+          <a class="button ghost" href="overview.html">전체 씬 흐름 보기</a>
+        </div>
+
+        <p class="builder-hint">오른쪽 아래의 `+` 버튼으로 장면 작성 창을 열 수 있습니다.</p>
+        <p class="save-status" id="save-status">현재는 이 브라우저에만 저장됩니다.</p>
+
+        <div class="search-bar">
+          <label for="scene-search">장면 검색</label>
+          <input id="scene-search" type="text" placeholder="장면 제목, 장소, 카메라, 편집, 상태로 검색">
+        </div>
+
+        <div class="board-controls">
+          <div class="filter-field">
+            <label for="filter-part">구간별 보기</label>
+            <select id="filter-part">
+              <option value="all">전체 보기</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-location">장소별 보기</label>
+            <select id="filter-location">
+              <option value="all">전체 보기</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-camera">카메라별 보기</label>
+            <select id="filter-camera">
+              <option value="all">전체 보기</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-edit">편집별 보기</label>
+            <select id="filter-edit">
+              <option value="all">전체 보기</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-status">촬영 상태별 보기</label>
+            <select id="filter-status">
+              <option value="all">전체 보기</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="storyboard-layout">
+          <aside class="scene-outline panel-lite">
+            <div class="outline-header">
+              <h3>장면 목차</h3>
+              <p id="scene-outline-count">0개 장면</p>
+            </div>
+            <div class="scene-outline-list" id="scene-outline-list"></div>
+          </aside>
+
+          <div class="storyboard-main">
+            <div class="storyboard-grid" id="storyboard-grid"></div>
+            <p class="empty-state" id="empty-state">아직 추가된 스토리보드가 없습니다. 아래 `+` 버튼을 눌러 장면을 추가해보세요.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="scene-builder-modal" id="scene-builder-modal" hidden>
+    <div class="scene-builder-backdrop" id="scene-builder-backdrop"></div>
+    <section class="scene-builder-panel" role="dialog" aria-modal="true" aria-labelledby="scene-builder-title">
+      <div class="scene-builder-header">
+        <div>
+          <p class="section-kicker">Write Scene</p>
+          <h2 id="scene-builder-title">장면 작성</h2>
+        </div>
+        <button class="modal-close-button" id="close-scene-builder" type="button">닫기</button>
+      </div>
+
+      <div class="scene-builder">
+        <div class="builder-grid compact-grid">
+          <div class="field">
+            <label for="scene-part">구간</label>
+            <input id="scene-part" type="text" list="part-suggestions" placeholder="예: 1절, 후렴, 엔딩">
+          </div>
+          <div class="field">
+            <label for="scene-title">장면 제목</label>
+            <input id="scene-title" type="text" placeholder="예: 복도에서 과제 들고 뛰는 장면">
+          </div>
+          <div class="field">
+            <label for="scene-location">장소</label>
+            <input id="scene-location" type="text" list="location-suggestions" placeholder="예: 학교 복도">
+          </div>
+          <div class="field">
+            <label for="scene-camera">카메라</label>
+            <input id="scene-camera" type="text" list="camera-suggestions" placeholder="예: 핸드헬드">
+          </div>
+          <div class="field">
+            <label for="scene-edit">편집</label>
+            <input id="scene-edit" type="text" list="edit-suggestions" placeholder="예: 빠른 컷 전환">
+          </div>
+          <div class="field">
+            <label for="scene-duration">장면 시간</label>
+            <input id="scene-duration" type="text" list="duration-suggestions" placeholder="예: 8초">
+          </div>
+          <div class="field">
+            <label for="scene-status">촬영 상태</label>
+            <select id="scene-status">
+              <option value="촬영 전">촬영 전</option>
+              <option value="촬영 완료">촬영 완료</option>
+              <option value="편집 중">편집 중</option>
+              <option value="편집 완료">편집 완료</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="scene-image">사진</label>
+            <input id="scene-image" type="file" accept="image/*">
+          </div>
+        </div>
+
+        <div class="builder-grid text-grid">
+          <div class="field">
+            <label for="scene-lyrics">가사</label>
+            <textarea id="scene-lyrics" placeholder="이 장면 옆에 보여줄 가사를 적어주세요."></textarea>
+          </div>
+          <div class="field">
+            <label for="scene-desc">장면 설명</label>
+            <textarea id="scene-desc" placeholder="행동, 분위기, 연출 포인트를 적어주세요."></textarea>
+          </div>
+        </div>
+
+        <div class="scene-builder-footer">
+          <button class="button ghost" id="cancel-scene-builder" type="button">취소</button>
+          <button class="button primary" id="add-scene" type="button">스토리보드 추가</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="floating-actions">
+    <button class="floating-action-button" id="open-scene-builder-plus" type="button" aria-label="스토리보드 추가">+</button>
+  </div>
+
+  <datalist id="part-suggestions"></datalist>
+  <datalist id="location-suggestions"></datalist>
+  <datalist id="camera-suggestions"></datalist>
+  <datalist id="edit-suggestions"></datalist>
+  <datalist id="duration-suggestions"></datalist>
+
+  <script src="script.js"></script>
+</body>
+</html>
