@@ -61,6 +61,7 @@ const draftFields = [
 
 let scenesCache = [];
 let refreshTimer = null;
+let activeEditorSceneId = null;
 
 function escapeHtml(value) {
   return String(value)
@@ -459,6 +460,10 @@ function renderScenes() {
 }
 
 async function refreshScenesSilently() {
+  if (activeEditorSceneId || !sceneBuilderModal.hidden) {
+    return;
+  }
+
   try {
     await fetchScenes();
   } catch {
@@ -565,11 +570,13 @@ function attachCardHandlers(card, scene) {
   const removeImageInput = card.querySelector(".remove-scene-image");
 
   editButton.addEventListener("click", () => {
+    activeEditorSceneId = scene.id;
     editor.hidden = false;
     saveStatus.textContent = "스토리보드 수정창을 열었습니다.";
   });
 
   cancelButton.addEventListener("click", () => {
+    activeEditorSceneId = null;
     editor.hidden = true;
     saveStatus.textContent = "스토리보드 수정을 취소했습니다.";
   });
@@ -605,6 +612,7 @@ function attachCardHandlers(card, scene) {
     }
 
     await updateScene(scene.id, payload);
+    activeEditorSceneId = null;
     editor.hidden = true;
     await fetchScenes();
     saveStatus.textContent = "스토리보드가 수정되었습니다.";
