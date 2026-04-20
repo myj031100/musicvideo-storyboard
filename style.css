@@ -656,22 +656,58 @@ h1 {
 
   .flow-grid {
     display: grid;
-    gap: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
     overflow: visible;
     padding: 0;
   }
 
   .flow-card {
     flex: initial;
-    padding: 14px;
+    min-height: 0;
+    padding: 10px;
+    border-radius: 14px;
   }
 
   .flow-card-top {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
+  .flow-card-top h3 {
+    font-size: 0.9rem;
+    line-height: 1.25;
+  }
+
+  .overview-image-frame,
   .scene-image-frame {
-    min-height: 170px;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .scene-image-frame img {
+    object-fit: contain;
+  }
+
+  .overview-lyrics-box {
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+
+  .overview-lyrics-box .scene-box-label {
+    margin-bottom: 6px;
+    font-size: 0.7rem;
+  }
+
+  .overview-lyrics-box .scene-lyrics-text {
+    -webkit-line-clamp: 2;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    min-height: calc(1.4em * 2);
+  }
+
+  .flow-card:nth-child(9n) {
+    break-after: page;
+    page-break-after: always;
   }
 
   .scene-status-badge,
