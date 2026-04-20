@@ -74,9 +74,9 @@ function renderScenes(scenes) {
           <span class="scene-status-badge ${getStatusClass(scene.status || "촬영 전")}">${escapeHtml(scene.status || "촬영 전")}</span>
         </div>
       </div>
-      <div class="flow-card-layout">
-        <div class="scene-image-frame">${getImageMarkup(scene.image, `${scene.title || "장면"} 이미지`)}</div>
-        <div class="flow-card-copy single-copy">
+      <div class="flow-card-layout horizontal-flow-layout">
+        <div class="scene-image-frame overview-image-frame">${getImageMarkup(scene.image, `${scene.title || "장면"} 이미지`)}</div>
+        <div class="flow-card-copy single-copy overview-copy">
           <div class="scene-lyrics-box overview-lyrics-box">
             <p class="scene-box-label">가사</p>
             <p class="scene-lyrics-text">${escapeHtml(scene.lyrics || "")}</p>

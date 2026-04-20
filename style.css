@@ -468,11 +468,17 @@ h1 {
 }
 
 .flow-grid {
-  display: grid;
+  display: flex;
   gap: 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 6px 6px 16px;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 6px;
 }
 
 .flow-card {
+  flex: 0 0 min(520px, 82vw);
   border-radius: 24px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.86);
@@ -480,6 +486,7 @@ h1 {
   box-shadow: 0 10px 30px rgba(75, 47, 26, 0.08);
   break-inside: avoid;
   page-break-inside: avoid;
+  scroll-snap-align: start;
 }
 
 .flow-card-top {
@@ -508,6 +515,11 @@ h1 {
   align-items: stretch;
 }
 
+.horizontal-flow-layout {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
 .flow-card-copy {
   display: grid;
   gap: 12px;
@@ -519,6 +531,37 @@ h1 {
 
 .overview-lyrics-box {
   height: 100%;
+}
+
+.overview-image-frame {
+  min-height: 260px;
+  aspect-ratio: 16 / 9;
+}
+
+.overview-copy {
+  align-content: start;
+}
+
+.overview-lyrics-box .scene-lyrics-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(1.7em * 2);
+}
+
+.flow-grid::-webkit-scrollbar {
+  height: 10px;
+}
+
+.flow-grid::-webkit-scrollbar-thumb {
+  background: rgba(214, 90, 49, 0.28);
+  border-radius: 999px;
+}
+
+.flow-grid::-webkit-scrollbar-track {
+  background: rgba(53, 39, 28, 0.06);
+  border-radius: 999px;
 }
 
 @page {
@@ -570,10 +613,14 @@ h1 {
   }
 
   .flow-grid {
+    display: grid;
     gap: 12px;
+    overflow: visible;
+    padding: 0;
   }
 
   .flow-card {
+    flex: initial;
     padding: 14px;
   }
 
