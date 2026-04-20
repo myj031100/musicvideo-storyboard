@@ -725,16 +725,18 @@ textarea {
   align-items: center;
   justify-content: center;
   min-height: 200px;
+  aspect-ratio: 4 / 5;
   border-radius: 18px;
   border: 1px dashed rgba(214, 90, 49, 0.28);
-  background: linear-gradient(135deg, rgba(255, 244, 237, 0.94), rgba(255, 255, 255, 0.95));
+  background: #fff;
   overflow: hidden;
 }
 
 .scene-image-frame img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   display: block;
 }
 
