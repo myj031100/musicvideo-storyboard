@@ -715,16 +715,16 @@ textarea {
 
 .scene-layout {
   display: grid;
-  grid-template-columns: minmax(460px, 1.25fr) minmax(260px, 0.9fr) minmax(180px, 0.62fr);
-  gap: 18px;
-  align-items: stretch;
+  grid-template-columns: minmax(560px, 1.45fr) minmax(320px, 0.92fr) minmax(220px, 0.68fr);
+  gap: 26px;
+  align-items: start;
 }
 
 .scene-image-frame {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 300px;
+  min-height: 340px;
   aspect-ratio: 16 / 10;
   border-radius: 18px;
   border: 1px dashed rgba(214, 90, 49, 0.28);
@@ -751,13 +751,13 @@ textarea {
 .scene-side {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   min-width: 0;
 }
 
 .scene-lyrics-box,
 .scene-desc-box {
-  padding: 14px;
+  padding: 16px 18px;
   border-radius: 18px;
   background: #fffaf7;
   border: 1px solid rgba(53, 39, 28, 0.08);
@@ -786,7 +786,7 @@ textarea {
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 10px;
+  gap: 12px;
   align-content: start;
   min-width: 0;
 }
@@ -795,7 +795,7 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 12px 14px;
+  padding: 14px 16px;
   border-radius: 14px;
   border: 1px dashed var(--line);
   background: #fffaf7;
