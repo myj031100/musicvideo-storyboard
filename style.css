@@ -29,7 +29,7 @@ body {
 }
 
 .page-shell {
-  max-width: 1200px;
+  max-width: 1380px;
   margin: 0 auto;
   padding: 32px 20px 56px;
 }
@@ -372,7 +372,7 @@ h1 {
 
 .storyboard-layout {
   display: grid;
-  grid-template-columns: 250px minmax(0, 1fr);
+  grid-template-columns: 220px minmax(0, 1fr);
   gap: 18px;
   align-items: start;
 }
@@ -715,7 +715,7 @@ textarea {
 
 .scene-layout {
   display: grid;
-  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr) minmax(220px, 0.7fr);
+  grid-template-columns: minmax(280px, 0.95fr) minmax(280px, 1.05fr) minmax(190px, 0.7fr);
   gap: 18px;
   align-items: stretch;
 }
@@ -752,6 +752,7 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  min-width: 0;
 }
 
 .scene-lyrics-box,
@@ -760,6 +761,7 @@ textarea {
   border-radius: 18px;
   background: #fffaf7;
   border: 1px solid rgba(53, 39, 28, 0.08);
+  min-width: 0;
 }
 
 .scene-box-label {
@@ -786,6 +788,7 @@ textarea {
   display: grid;
   gap: 10px;
   align-content: start;
+  min-width: 0;
 }
 
 .scene-meta li {
