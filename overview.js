@@ -7,6 +7,8 @@ import {
 const flowGrid = document.getElementById("flow-grid");
 const flowEmpty = document.getElementById("flow-empty");
 const overviewSummary = document.getElementById("overview-summary");
+const flowPrevButton = document.getElementById("flow-prev");
+const flowNextButton = document.getElementById("flow-next");
 const REFRESH_INTERVAL_MS = 5000;
 
 function escapeHtml(value) {
@@ -88,6 +90,21 @@ function renderScenes(scenes) {
   });
 }
 
+function scrollFlowByCard(direction) {
+  const firstCard = flowGrid.querySelector(".flow-card");
+  if (!firstCard) return;
+
+  const cardWidth = firstCard.getBoundingClientRect().width;
+  const styles = window.getComputedStyle(flowGrid);
+  const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
+  const distance = cardWidth + gap;
+
+  flowGrid.scrollBy({
+    left: distance * direction,
+    behavior: "smooth"
+  });
+}
+
 async function refreshOverview() {
   try {
     const scenes = await requestSupabase();
@@ -101,3 +118,11 @@ async function refreshOverview() {
 
 refreshOverview();
 window.setInterval(refreshOverview, REFRESH_INTERVAL_MS);
+
+flowPrevButton?.addEventListener("click", () => {
+  scrollFlowByCard(-1);
+});
+
+flowNextButton?.addEventListener("click", () => {
+  scrollFlowByCard(1);
+});
