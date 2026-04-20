@@ -29,9 +29,9 @@ body {
 }
 
 .page-shell {
-  max-width: 1380px;
+  max-width: 1660px;
   margin: 0 auto;
-  padding: 32px 20px 56px;
+  padding: 28px 18px 56px;
 }
 
 .hero {
@@ -372,7 +372,7 @@ h1 {
 
 .storyboard-layout {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
+  grid-template-columns: 190px minmax(0, 1fr);
   gap: 18px;
   align-items: start;
 }
@@ -715,7 +715,7 @@ textarea {
 
 .scene-layout {
   display: grid;
-  grid-template-columns: minmax(280px, 0.95fr) minmax(280px, 1.05fr) minmax(190px, 0.7fr);
+  grid-template-columns: minmax(460px, 1.25fr) minmax(260px, 0.9fr) minmax(180px, 0.62fr);
   gap: 18px;
   align-items: stretch;
 }
@@ -724,8 +724,8 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
-  aspect-ratio: 4 / 5;
+  min-height: 300px;
+  aspect-ratio: 16 / 10;
   border-radius: 18px;
   border: 1px dashed rgba(214, 90, 49, 0.28);
   background: #fff;
