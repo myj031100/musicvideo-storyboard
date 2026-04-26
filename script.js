@@ -72,6 +72,22 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
+function formatStyledText(value) {
+  const safe = escapeHtml(value || "");
+  const tagRules = [
+    ["red", "text-accent-red"],
+    ["orange", "text-accent-orange"],
+    ["blue", "text-accent-blue"],
+    ["green", "text-accent-green"],
+    ["bold", "text-accent-bold"]
+  ];
+
+  return tagRules.reduce((result, [tag, className]) => {
+    const pattern = new RegExp(`\\[${tag}\\](.*?)\\[\\/${tag}\\]`, "gis");
+    return result.replace(pattern, `<span class="${className}">$1</span>`);
+  }, safe);
+}
+
 function getImageMarkup(imageValue, altText = "스토리보드 이미지") {
   if (!imageValue) return IMAGE_PLACEHOLDER;
   return `<img src="${imageValue}" alt="${escapeHtml(altText)}">`;
@@ -309,7 +325,7 @@ function updateOutline() {
 function createFeedbackMarkup(feedbacks) {
   return (feedbacks || []).map((text) => `
     <li>
-      <span class="feedback-text">${escapeHtml(text)}</span>
+      <span class="feedback-text">${formatStyledText(text)}</span>
       <button class="delete-feedback-button" type="button">삭제</button>
     </li>
   `).join("");
@@ -390,11 +406,11 @@ function createSceneCard(scene, index) {
       <div class="scene-side">
         <div class="scene-lyrics-box">
           <p class="scene-box-label">가사</p>
-          <p class="scene-lyrics-text">${escapeHtml(scene.lyrics || "")}</p>
+          <p class="scene-lyrics-text">${formatStyledText(scene.lyrics || "")}</p>
         </div>
         <div class="scene-desc-box">
           <p class="scene-box-label">장면 설명</p>
-          <p class="scene-desc">${escapeHtml(scene.desc || "")}</p>
+          <p class="scene-desc">${formatStyledText(scene.desc || "")}</p>
         </div>
       </div>
       <ul class="scene-meta">
@@ -511,7 +527,7 @@ function attachCardHandlers(card, scene) {
 
     const item = document.createElement("li");
     item.innerHTML = `
-      <span class="feedback-text">${escapeHtml(text)}</span>
+      <span class="feedback-text">${formatStyledText(text)}</span>
       <button class="delete-feedback-button" type="button">삭제</button>
     `;
     feedbackList.appendChild(item);

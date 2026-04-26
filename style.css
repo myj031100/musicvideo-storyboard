@@ -906,6 +906,31 @@ textarea {
   white-space: pre-wrap;
 }
 
+.text-accent-red {
+  color: #c53a21;
+  font-weight: 700;
+}
+
+.text-accent-orange {
+  color: #d8741f;
+  font-weight: 700;
+}
+
+.text-accent-blue {
+  color: #2f5ea8;
+  font-weight: 700;
+}
+
+.text-accent-green {
+  color: #2f7a4f;
+  font-weight: 700;
+}
+
+.text-accent-bold {
+  color: var(--text);
+  font-weight: 800;
+}
+
 .scene-meta {
   list-style: none;
   padding: 0;

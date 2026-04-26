@@ -20,6 +20,22 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
+function formatStyledText(value) {
+  const safe = escapeHtml(value || "");
+  const tagRules = [
+    ["red", "text-accent-red"],
+    ["orange", "text-accent-orange"],
+    ["blue", "text-accent-blue"],
+    ["green", "text-accent-green"],
+    ["bold", "text-accent-bold"]
+  ];
+
+  return tagRules.reduce((result, [tag, className]) => {
+    const pattern = new RegExp(`\\[${tag}\\](.*?)\\[\\/${tag}\\]`, "gis");
+    return result.replace(pattern, `<span class="${className}">$1</span>`);
+  }, safe);
+}
+
 function getStatusClass(status) {
   if (status === "촬영 완료") return "is-shot";
   if (status === "편집 중") return "is-editing";
@@ -81,7 +97,7 @@ function renderScenes(scenes) {
         <div class="flow-card-copy single-copy overview-copy">
           <div class="scene-lyrics-box overview-lyrics-box">
             <p class="scene-box-label">가사</p>
-            <p class="scene-lyrics-text">${escapeHtml(scene.lyrics || "")}</p>
+            <p class="scene-lyrics-text">${formatStyledText(scene.lyrics || "")}</p>
           </div>
         </div>
       </div>
