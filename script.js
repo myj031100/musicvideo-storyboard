@@ -296,7 +296,7 @@ function updateOutline() {
     button.type = "button";
     button.className = "scene-outline-button";
     button.innerHTML = `
-      <strong>SCENE ${String(index + 1).padStart(2, "0")}</strong>
+      <strong>CUT ${String(index + 1).padStart(2, "0")}</strong>
       <span>${escapeHtml(scene.title || "제목 없음")}</span>
     `;
     button.addEventListener("click", () => {
@@ -373,7 +373,7 @@ function createSceneCard(scene, index) {
     <div class="scene-card-header">
       <div class="scene-card-title-block">
         <div class="scene-top">
-          <p class="scene-number">SCENE ${String(index + 1).padStart(2, "0")}</p>
+          <p class="scene-number">CUT ${String(index + 1).padStart(2, "0")}</p>
           <span class="scene-tag">${escapeHtml(scene.part || "")}</span>
         </div>
         <h3>${escapeHtml(scene.title || "")}</h3>

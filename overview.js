@@ -68,7 +68,7 @@ function renderScenes(scenes) {
     card.innerHTML = `
       <div class="flow-card-top">
         <div>
-          <p class="scene-number">SCENE ${String(index + 1).padStart(2, "0")}</p>
+          <p class="scene-number">CUT ${String(index + 1).padStart(2, "0")}</p>
           <h3>${escapeHtml(scene.title || "제목 없음")}</h3>
         </div>
         <div class="flow-top-meta">
