@@ -504,8 +504,8 @@ h1 {
 }
 
 .sheet-header-side {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
+  writing-mode: horizontal-tb;
+  text-orientation: initial;
   letter-spacing: 0.04em;
 }
 
