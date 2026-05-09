@@ -114,17 +114,13 @@ function renderSheets(scenes) {
     const section = document.createElement("section");
     section.className = "sheet-board";
 
-    const firstScene = pageScenes[0];
-    const lastScene = pageScenes[pageScenes.length - 1];
     const firstCut = String(pageIndex * CUTS_PER_PAGE + 1).padStart(2, "0");
     const lastCut = String(pageIndex * CUTS_PER_PAGE + pageScenes.length).padStart(2, "0");
 
     section.innerHTML = `
       <div class="sheet-board-header">
         <div class="sheet-header-box sheet-header-strong">CUT ${firstCut}-${lastCut}</div>
-        <div class="sheet-header-box">${escapeHtml(firstScene?.part || "구간 미정")}</div>
-        <div class="sheet-header-box">뮤직비디오 콘티 시트</div>
-        <div class="sheet-header-box">${escapeHtml(lastScene?.part || "구간 미정")}</div>
+        <div class="sheet-header-box sheet-header-title">뮤직비디오 콘티 시트</div>
         <div class="sheet-header-box sheet-header-side">PAGE ${pageIndex + 1}</div>
       </div>
       <div class="sheet-board-body"></div>
