@@ -826,10 +826,11 @@ h1 {
   }
 
   .sheet-pages {
-    gap: 12px;
+    gap: 10px;
   }
 
   .sheet-board {
+    padding: 12px;
     border-radius: 0;
     box-shadow: none;
     page-break-after: always;
@@ -837,6 +838,73 @@ h1 {
 
   .sheet-board:last-child {
     page-break-after: auto;
+  }
+
+  .sheet-board-header {
+    margin-bottom: 10px;
+  }
+
+  .sheet-header-box {
+    min-height: 34px;
+    padding: 4px 8px;
+    font-size: 0.82rem;
+  }
+
+  .sheet-header-strong {
+    font-size: 1.22rem;
+  }
+
+  .sheet-header-title {
+    font-size: 0.9rem;
+  }
+
+  .sheet-board-body {
+    gap: 8px;
+  }
+
+  .sheet-row {
+    min-height: 150px;
+  }
+
+  .sheet-visual-cell {
+    padding: 8px;
+  }
+
+  .sheet-cut-badge {
+    top: 6px;
+    left: 6px;
+    min-width: 24px;
+    min-height: 24px;
+    font-size: 0.82rem;
+  }
+
+  .sheet-image-box {
+    min-height: 132px;
+  }
+
+  .sheet-mini-block,
+  .sheet-mini-meta,
+  .sheet-desc-cell {
+    padding: 8px 10px;
+  }
+
+  .sheet-mini-title {
+    margin-bottom: 6px;
+    font-size: 0.76rem;
+  }
+
+  .sheet-mini-copy,
+  .sheet-desc-copy,
+  .sheet-mini-meta p {
+    font-size: 0.74rem;
+    line-height: 1.4;
+  }
+
+  .sheet-bottom-meta {
+    gap: 3px;
+    margin-top: 8px;
+    padding-top: 6px;
+    font-size: 0.7rem;
   }
 
   .flow-grid {

@@ -8,7 +8,7 @@ const sheetPages = document.getElementById("sheet-pages");
 const sheetEmpty = document.getElementById("sheet-empty");
 const sheetSummary = document.getElementById("sheet-summary");
 const REFRESH_INTERVAL_MS = 5000;
-const CUTS_PER_PAGE = 5;
+const CUTS_PER_PAGE = 4;
 
 function escapeHtml(value) {
   return String(value)
